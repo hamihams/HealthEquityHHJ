@@ -34,8 +34,8 @@ window pane. Then open a new terminal by going to the Terminal menu at the top o
 2) type these command to create a new environment for this project. Replace <yourProjectName> 
     with the name of your project.
 
-    conda create --name NEWNAME python=3.11
-    conda activate NEWNAME
+    conda create --name HamisProject python=3.11
+    conda activate HamisProject
 
 3) now you want to set this to your default environment for this project. go to the View menu 
     above and choose Command Palette...
@@ -73,8 +73,8 @@ python -m pip install --upgrade pip
 
 # The next command will install all the packages that are listed in the "requirements.txt" file
 
-python -m pip install -r requirements.txt
-(Mac users will type: python3 -m pip install -r requirements.txt)
+python3 -m pip install -r requirements.txt
+(Mac users will type:)
 
 # if you get an error READ IT. If it says you don't have access you need to use the '--user'
 # option.  See the command below.  You can add --user to any pip command.
