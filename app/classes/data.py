@@ -36,6 +36,7 @@ class User(UserMixin, Document):
     adult_email = StringField()
     consent = BooleanField(default=False)
     role = StringField()
+    age = IntField()
 
     meta = {
         'ordering': ['lname','fname']
@@ -98,5 +99,15 @@ class Clinic(Document):
     meta = {
         'ordering': ['-createdate']
     }
+class Pet(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    typePet = StringField()
+    namePet = StringField()
+    agePet = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
 
+    meta = {
+        'ordering': ['-createdate']
+    }
     
