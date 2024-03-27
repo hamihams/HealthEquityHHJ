@@ -54,7 +54,7 @@ class ClinicForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class PetForm(FlaskForm):
-    typePet = StringField('Type', validators=[DataRequired()])
-    namePet = StringField('Name', validators=[DataRequired()])
-    agePet = IntegerField('Age', validators=[NumberRange(min=0,max=20, message="Enter a number between 0 and 20.")])
+    type = StringField('Type', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    age = IntegerField('Age', validators=[NumberRange(min=0,max=20, message="Enter a number between 0 and 20.")])
     submit = SubmitField('Submit')

@@ -101,9 +101,9 @@ class Clinic(Document):
     }
 class Pet(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    typePet = StringField()
-    namePet = StringField()
-    agePet = StringField()
+    type = StringField()
+    name = StringField()
+    age = IntField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
