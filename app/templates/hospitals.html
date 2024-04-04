@@ -3,34 +3,55 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>hi all</h1>
-<!-- {% if hospitals %}
-    {% for hospital in hospital %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">Hospital Ratings</h1>
+    </div>
+    <div class="col">
+        <a href="/hospital/new" class="btn btn-primary btn-sm mt-5" role="button">Provide a Rating</a>
+    </div>
+</div>
+
+{% if hospitals %}
+    {% for hospital in hospitals %}
         <div class="row border-bottom">
+            <!-- <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/hospital/delete/{{hospital.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/hospital/edit/{{hospital.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a> -->
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Date</h3>
+                <h3 class="display-5">Type</h3>
                 {% endif %}
 
                 <a href="/hospital/{{hospital.id}}">
-                    {{moment(hospital.create_date).calendar()}}
+                {{hospital.type}}
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">User</h3>
+                <h3 class="display-5">Hospital Name</h3>
                 {% endif %}
-                {{hospital.author.fname}} {{hospital.author.lname}}
+                {{hospital.name}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 class="display-5">Subject</h3>
+                    <h3 class="display-5">Is it a Safety-net hospital?</h3>
                 {% endif %}
-                {{hospital.subject}}
+                {{hospital.safeNet}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Ratings</h3>
+                {% endif %}
+                {{hospital.rating}}
             </div>
         </div>
     {% endfor %}
 {% else %}
-{% endif %} -->
+{% endif %}
 
 {% endblock %}

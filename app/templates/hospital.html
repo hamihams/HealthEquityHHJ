@@ -3,5 +3,50 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1> hi one </h1>
+<div class="container m-5">
+    <div class="row">
+      <div class="col">
+        {% if hospital %}
+    {{moment(hospital.create_date).calendar()}} by {{hospital.author.fname}} {{hospital.author.lname}} 
+    {% if hospital.modifydate %}
+        modified {{moment(hospital.modifydate).calendar()}}
+    {% endif %}
+    <br>
+    {% if hospital.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/hospital/delete/{{hospital.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/hospital/edit/{{hospital.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+    <h1 class="display-5"> Hospital Name: {{hospital.name}}</h1>
+    <br>
+    <h1 class="display-5"> Type: {{hospital.type}}</h1>
+    <br>
+    <h1 class="display-5"> Is it a Saftey-Net Hospital: {{hospital.safeNet}}</h1>
+    <br>
+    <h1 class="display-5"> Address: {{hospital.street}}, {{hospital.city}}, {{hospital.state}} {{hospital.zipcode}}</h1>
+    <br>
+    <h1 class="display-5"> Rating 0-10: {{hospital.rating}}</h1>
+
+{% else %}
+    <h1 class="display-5">No Posts</h1>
+{% endif %}
+    <!-- Type: {{hospital.type}} <br>
+    Name: {{hospital.name}} <br>
+    SafeNet: {{hospital.safeNet}} <br>
+    City: {{hospital.city}} <br>
+    Street: {{hospital.street}} <br>
+    State: {{hospital.state}} <br>
+    Zipcode: {{hospital.zipcode}} <br>
+    Rating: {{hospital.rating}} -->
+
+      </div>
+      <div class="col text-center">
+            {% if hospital.author.image %}
+                <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(hospital.author.image.read())}}">
+            {% endif %}
+      </div>
+    </div>
 {% endblock %}
