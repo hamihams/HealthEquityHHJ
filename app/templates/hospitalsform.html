@@ -4,7 +4,7 @@ copy this one and then edit it. -->
 {% extends "base.html" %}
 
 {% block body %}
-        <h1>Tell us about your Pet!</h1>
+        <h1>Tell us about the Hospital!</h1>
 
 
         <!--List all errors in a group at the top-->
@@ -34,8 +34,36 @@ copy this one and then edit it. -->
                 {% endfor %}
             </p>
             <p>
-                {{ form.age.label }}<br>
-                {{ form.age() }}<br>
+                {{ form.safeNet.label }}<br>
+                {{ form.safeNet() }}<br>
+                {% for error in form.age.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.city.label }}<br>
+                {{ form.city() }}<br>
+                {% for error in form.age.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.state.label }}<br>
+                {{ form.state() }}<br>
+                {% for error in form.age.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.zipcode.label }}<br>
+                {{ form.zipcode() }}<br>
+                {% for error in form.age.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.rating.label }}<br>
+                {{ form.rating() }}<br>
                 {% for error in form.age.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}

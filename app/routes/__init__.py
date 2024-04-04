@@ -4,4 +4,4 @@ from .forum import *
 from .user import *
 from .sleep import *
 from .clinic import *
-from .Pet import *
+from .hospital import *

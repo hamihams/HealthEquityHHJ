@@ -99,11 +99,15 @@ class Clinic(Document):
     meta = {
         'ordering': ['-createdate']
     }
-class Pet(Document):
+class Hospital(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     type = StringField()
+    safeNet = BooleanField()
     name = StringField()
-    age = IntField()
+    city = StringField()
+    state = StringField()
+    zipcode = StringField()
+    rating = IntField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 

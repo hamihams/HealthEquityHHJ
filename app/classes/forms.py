@@ -13,15 +13,15 @@ class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
-    submit = SubmitField('Post')
-    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
+    submit = SubmitField('Save')
+    role = SelectField('Role',choices=[("Patient","Patient"),("Family Member","Family Member"), ("Healthcare Staff", "Healthcare Staff")])
     age = IntegerField('Age', validators=[NumberRange(min=15,max=110, message="Enter a number between 15 and 110.")])
 
 class ConsentForm(FlaskForm):
     adult_fname = StringField('First Name',validators=[DataRequired()])
     adult_lname = StringField('Last Name',validators=[DataRequired()])
     adult_email = EmailField('Email',validators=[Email()])
-    consent = RadioField('Do you want your parents or teachers to see your sleep data/graph', choices=[(True,"True"),(False,"False")])
+    consent = RadioField('Do you allow your information ', choices=[(True,"True"),(False,"False")])
     submit = SubmitField('Submit')
 
 class SleepForm(FlaskForm):
@@ -53,8 +53,13 @@ class ClinicForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-class PetForm(FlaskForm):
-    type = StringField('Type', validators=[DataRequired()])
-    name = StringField('Name', validators=[DataRequired()])
-    age = IntegerField('Age', validators=[NumberRange(min=0,max=20, message="Enter a number between 0 and 20.")])
+class HospitalForm(FlaskForm):
+    type = SelectField('Type',choices=[("Public","Public"),("Private","Private"), ("Non Profit", "Non Profit")])
+    safeNet = RadioField('Is it a Safety-Net Hopital?', choices=[(True,"Yes"),(False,"No")])
+    name = StringField('Hospital Name', validators=[DataRequired()])
+    street = StringField('Address', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zipcode = StringField('Zipcode',validators=[DataRequired()])
+    rating = IntegerField('Rate your experience: 0 is terrible, 10 is amazing', validators=[NumberRange(min=0,max=10, message="Enter a number between 0 and 10.")])
     submit = SubmitField('Submit')
