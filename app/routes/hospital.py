@@ -29,7 +29,8 @@ def hospitalNew():
             name = form.name.data,
             safeNet = form.safeNet.data,
             city = form.city.data,
-            sate = form.state.data,
+            street = form.street.data,
+            state = form.state.data,
             zipcode = form.zipcode.data,
             rating = form.rating.data,
             author = current_user.id,
@@ -53,12 +54,12 @@ def hospitalNew():
     # see how that works.
     return render_template('hospitalsform.html',form=form)
 
-@app.route('/pet/<petID>')
+@app.route('/hospital/<hospitalID>')
 # This route will only run if the user is logged in.
 @login_required
-def pet(petID):
+def hospital(hospitalID):
     # retrieve the blog using the blogID
-    thisPet = Pet.objects.get(id=petID)
+    thisHospital = Hospital.objects.get(id=hospitalID)
     # If there are no comments the 'comments' object will have the value 'None'. Comments are 
     # related to blogs meaning that every comment contains a reference to a blog. In this case
     # there is a field on the comment collection called 'blog' that is a reference the Blog
@@ -66,70 +67,80 @@ def pet(petID):
     # the blog object (thisBlog in this case) to get all the comments.
     
     # Send the blog object and the comments object to the 'blog.html' template.
-    return render_template('pet.html',pet=thisPet)
+    return render_template('hospital.html',hospital=thisHospital)
 
-@app.route('/pet/list')
-@app.route('/pets')
+@app.route('/hospital/list')
+@app.route('/hospitals')
 # This means the user must be logged in to see this page
 @login_required
-def petList():
+def hospitalList():
     # This retrieves all of the 'blogs' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'blogs'.
-    pets = Pet.objects()
+    hospitals = Hospital.objects()
     # This renders (shows to the user) the blogs.html template. it also sends the blogs object 
     # to the template as a variable named blogs.  The template uses a for loop to display
     # each blog.
-    return render_template('pets.html',pets=pets)
+    return render_template('hospitals.html',hospitals=hospitals)
 
-@app.route('/pet/edit/<petID>', methods=['GET', 'POST'])
+@app.route('/hospital/edit/<hospitalID>', methods=['GET', 'POST'])
 @login_required
-def petEdit(petID):
-    editPet = Pet.objects.get(id=petID)
+def hospitalEdit(hospitalID):
+    editHospital = Hospital.objects.get(id=hospitalID)
     # if the user that requested to edit this blog is not the author then deny them and
     # send them back to the blog. If True, this will exit the route completely and none
     # of the rest of the route will be run.
-    if current_user != editPet.author:
-        flash("You can't edit a pet you don't own.")
-        return redirect(url_for('pet',petID=petID))
+    if current_user != editHospital.author:
+        flash("You can't edit a post you don't own.")
+        return redirect(url_for('hospital',hospitalID=hospitalID))
     # get the form object
-    form = PetForm()
+    form = HospitalForm()
     # If the user has submitted the form then update the blog.
     if form.validate_on_submit():
         # update() is mongoengine method for updating an existing document with new data.
-        editPet.update(
+        editHospital.update(
             type = form.type.data,
             name = form.name.data,
-            age = form.age.data,
+            safeNet = form.safeNet.data,
+            street = form.street.data,
+            city = form.city.data,
+            state = form.state.data,
+            zipcode = form.zipcode.data,
+            rating = form.rating.data,
             modify_date = dt.datetime.utcnow
         )
         # After updating the document, send the user to the updated blog using a redirect.
-        return redirect(url_for('pet',petID=petID))
+        return redirect(url_for('hospital',hospitalID=hospitalID))
 
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
-    form.type.data = editPet.type
-    form.name.data = editPet.name
-    form.age.data = editPet.age
+    form.type.data = editHospital.type
+    form.name.data = editHospital.name
+    form.safeNet.data = editHospital.safeNet
+    form.street.data = editHospital.street
+    form.city.data = editHospital.city
+    form.state.data = editHospital.state
+    form.zipcode.data = editHospital.zipcode
+    form.rating.data = editHospital.rating
     
-    return render_template('petsform.html',form=form)
+    return render_template('hospitalsform.html',form=form)
 
-@app.route('/pet/delete/<petID>')
+@app.route('/hospital/delete/<hospitalID>')
 # Only run this route if the user is logged in.
 @login_required
-def petDelete(petID):
+def hospitalDelete(hospitalID):
     # retrieve the blog to be deleted using the blogID
-    deletePet = Pet.objects.get(id=petID)
+    deleteHospital = Hospital.objects.get(id=hospitalID)
     # check to see if the user that is making this request is the author of the blog.
     # current_user is a variable provided by the 'flask_login' library.
-    if current_user == deletePet.author:
+    if current_user == deleteHospital.author:
         # delete the blog using the delete() method from Mongoengine
-        deletePet.delete()
+        deleteHospital.delete()
         # send a message to the user that the blog was deleted.
-        flash('The Pet was deleted.')
+        flash('The post was deleted.')
     else:
         # if the user is not the author tell them they were denied.
-        flash("You can't delete a Pet you don't own.")
+        flash("You can't delete a post you don't own.")
     # Retrieve all of the remaining blogs so that they can be listed.
-    pets = Pet.objects()  
+    hospitals = Hospital.objects()  
     # Send the user to the list of remaining blogs.
-    return render_template('pets.html',pets=pets)
+    return render_template('hospitals.html',hospitals=hospitals)

@@ -1,0 +1,36 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>hi all</h1>
+<!-- {% if hospitals %}
+    {% for hospital in hospital %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/hospital/{{hospital.id}}">
+                    {{moment(hospital.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{hospital.author.fname}} {{hospital.author.lname}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Subject</h3>
+                {% endif %}
+                {{hospital.subject}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+{% endif %} -->
+
+{% endblock %}

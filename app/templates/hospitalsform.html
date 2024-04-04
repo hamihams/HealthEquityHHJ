@@ -20,9 +20,17 @@ copy this one and then edit it. -->
             {{ form.hidden_tag() }}
             <p>
                 {{ form.type.label }} <br>
-                {{ form.type(size=64) }}
+                {{ form.type(size=3) }}
                 <!--List the errors for this field-->
                 {% for error in form.type.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.street.label }} <br>
+                {{ form.street() }}
+                <!--List the errors for this field-->
+                {% for error in form.street.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
@@ -36,35 +44,35 @@ copy this one and then edit it. -->
             <p>
                 {{ form.safeNet.label }}<br>
                 {{ form.safeNet() }}<br>
-                {% for error in form.age.errors %}
+                {% for error in form.safeNet.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.city.label }}<br>
                 {{ form.city() }}<br>
-                {% for error in form.age.errors %}
+                {% for error in form.city.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.state.label }}<br>
                 {{ form.state() }}<br>
-                {% for error in form.age.errors %}
+                {% for error in form.state.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.zipcode.label }}<br>
                 {{ form.zipcode() }}<br>
-                {% for error in form.age.errors %}
+                {% for error in form.zipcode.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.rating.label }}<br>
                 {{ form.rating() }}<br>
-                {% for error in form.age.errors %}
+                {% for error in form.rating.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>

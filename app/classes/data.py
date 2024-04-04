@@ -104,6 +104,7 @@ class Hospital(Document):
     type = StringField()
     safeNet = BooleanField()
     name = StringField()
+    street = StringField()
     city = StringField()
     state = StringField()
     zipcode = StringField()
