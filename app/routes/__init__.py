@@ -5,3 +5,4 @@ from .user import *
 from .sleep import *
 from .clinic import *
 from .hospital import *
+from .review import *

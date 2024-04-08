@@ -116,3 +116,14 @@ class Hospital(Document):
         'ordering': ['-createdate']
     }
     
+class Reviews(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    name = StringField()
+    text = StringField()
+    rating = IntField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }

@@ -61,5 +61,11 @@ class HospitalForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     zipcode = StringField('Zipcode',validators=[DataRequired()])
-    rating = IntegerField('Rate your experience: 0 is terrible, 10 is amazing', validators=[NumberRange(min=0,max=10, message="Enter a number between 0 and 10.")])
+    rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
     submit = SubmitField('Submit')
+
+class BlogForm(FlaskForm):
+    name = StringField('Subject', validators=[DataRequired()])
+    text = TextAreaField('Blog', validators=[DataRequired()])
+    rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
+    submit = SubmitField('Blog')
