@@ -64,8 +64,12 @@ class HospitalForm(FlaskForm):
     rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
     submit = SubmitField('Submit')
 
-class BlogForm(FlaskForm):
-    name = StringField('Subject', validators=[DataRequired()])
-    text = TextAreaField('Blog', validators=[DataRequired()])
+class ReviewForm(FlaskForm):
+    name = StringField('Hospital Name', validators=[DataRequired()])
+    text = TextAreaField('Write your Review', validators=[DataRequired()])
     rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
-    submit = SubmitField('Blog')
+    submit = SubmitField('Post Review')
+
+class ReplyForm(FlaskForm):
+    text = TextAreaField('Reply', validators=[DataRequired()])
+    submit = SubmitField('Post')

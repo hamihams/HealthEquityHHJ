@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">Recent Reviews</h1>
+    </div>
+    <div class="col">
+        <a href="/review/new" class="btn btn-primary btn-sm mt-5" role="button">Post a Review</a>
+    </div>
+</div>
+
+{% if reviews %}
+    {% for review in reviews %}
+        <div class="row border-bottom">
+            <!-- <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/review/delete/{{review.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/review/edit/{{review.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a> -->
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/review/{{review.id}}">
+                    {{moment(review.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">User</h3>
+                {% endif %}
+                {{review.author.fname}} {{review.author.lname}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Hospital</h3>
+                {% endif %}
+                {{review.name}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Ratings</h3>
+                {% endif %}
+                {{review.rating}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+{% endif %}
+
+{% endblock %}

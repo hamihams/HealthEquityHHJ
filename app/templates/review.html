@@ -1,0 +1,58 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container m-5">
+    <div class="row">
+      <div class="col">
+        {% if review %}
+    {{moment(review.create_date).calendar()}} by {{review.author.fname}} {{review.author.lname}} 
+    {% if review.modifydate %}
+        modified {{moment(review.modifydate).calendar()}}
+    {% endif %}
+    <br>
+    {% if review.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Review" href="/review/delete/{{review.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{review.name}}</h1>
+    <br>
+    <h1 class="display-5"> Rating 0-10: {{review.rating}}</h1>
+    <br>
+    <h3>{{review.text}}</h3>
+    <br>
+    <a href="/reply/new/{{review.id}}" class="btn btn-primary btn-sm" role="button">Reply</a>
+
+    {% if replies %}
+    <h1 class="display-5">Replies</h1>
+    {% for reply in replies %}
+        {% if current_user == reply.author %}
+            <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
+        {% endif %}
+        {{moment(reply.create_date).calendar()}} {{reply.author.username}} 
+        {% if reply.modifydate %}
+            modified {{moment(reply.modifydate).calendar()}}
+        {% endif %}
+        <br>
+        <p class="fs-3">
+            {{reply.text}}
+        </p>
+    {% endfor %}
+    {% else %}
+        <h1 class="display-5">No Replies</h1>
+    {% endif %}
+     </div>
+     <div class="col text-center">
+            {% if review.author.image %}
+                    <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(review.author.image.read())}}">
+                {% endif %}
+            </div>
+        </div>
+        
+{% else %}
+{% endif %}
+{% endblock %}
