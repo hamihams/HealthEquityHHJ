@@ -33,7 +33,7 @@
             <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
             <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
         {% endif %}
-        {{moment(reply.create_date).calendar()}} {{reply.author.username}} 
+        {{reply.author.fname}} {{reply.author.lname}}:{{moment(reply.create_date).calendar()}}  
         {% if reply.modifydate %}
             modified {{moment(reply.modifydate).calendar()}}
         {% endif %}
