@@ -13,6 +13,9 @@
     {% endif %}
     <br>
     {% if review.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Edit Blog" href="/review/edit/{{review.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
         <a data-toggle="tooltip" data-placement="top" title="Delete Review" href="/review/delete/{{review.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
