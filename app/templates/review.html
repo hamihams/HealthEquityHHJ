@@ -23,7 +23,7 @@
 
     <h1 class="display-5">{{review.name}}</h1>
     <br>
-    <h1 class="display-5"> Rating 0-10: {{review.rating}}</h1>
+    <h1 class="display-5"> Rating 0-5: {{review.rating}}</h1>
     <br>
     <h3>{{review.text}}</h3>
     <br>
@@ -36,7 +36,7 @@
             <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
             <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
         {% endif %}
-        {{reply.author.fname}} {{reply.author.lname}}:{{moment(reply.create_date).calendar()}}  
+        {{reply.author.fname}} {{reply.author.lname}}: {{moment(reply.create_date).calendar()}}  
         {% if reply.modifydate %}
             modified {{moment(reply.modifydate).calendar()}}
         {% endif %}
