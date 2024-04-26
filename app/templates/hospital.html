@@ -20,15 +20,15 @@
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
     {% endif %}
-    <h1 class="display-5"> Hospital Name: {{hospital.name}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Hospital Name: <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.name}}</p></h1>
     <br>
-    <h1 class="display-5"> Type: {{hospital.type}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Type: <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.type}}</p></h1>
     <br>
-    <h1 class="display-5"> Is it a Saftey-Net Hospital: {{hospital.safeNet}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Is it a Saftey-Net Hospital: <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.safeNet}}</p></h1>
     <br>
-    <h1 class="display-5"> Address: {{hospital.street}}, {{hospital.city}}, {{hospital.state}} {{hospital.zipcode}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Address: <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.street}}, {{hospital.city}}, {{hospital.state}} {{hospital.zipcode}}</p></h1>
     <br>
-    <h1 class="display-5"> Rating 0-10: {{hospital.rating}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating (0-5 Stars): <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.rating}}</p></h1>
 
 {% else %}
     <h1 class="display-5">No Posts</h1>

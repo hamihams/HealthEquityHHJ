@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1 class="display-1">
+<h1 class="display-1" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c">
     My Profile
     <a href="/myprofile/edit">
         <img width="40" src="/static/edit.png">
@@ -15,7 +15,7 @@
             <img class="img-thumbnail" width = "100" src="/static/bdog.png">
         {% endif %} 
     </div>
-    <div class="col display-5">
+    <div class="col display-5" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#125672">
         {% if current_user.fname and current_user.lname %}
             Name: {{current_user.fname}}  {{current_user.lname}} <br>
         {% else %}

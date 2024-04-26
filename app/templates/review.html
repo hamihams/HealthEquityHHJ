@@ -20,17 +20,17 @@
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
     {% endif %}
-
-    <h1 class="display-5">{{review.name}}</h1>
     <br>
-    <h1 class="display-5"> Rating 0-5: {{review.rating}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c">{{review.name}}</h1>
     <br>
-    <h3>{{review.text}}</h3>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating 0-5: {{review.rating}}</h1>
     <br>
-    <a href="/reply/new/{{review.id}}" class="btn btn-primary btn-sm" role="button">Reply</a>
-
+    <h3 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#45567b">{{review.text}}</h3>
+    <br>
+    <a href="/reply/new/{{review.id}}" class="btn btn-primary btn-sm" role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:100px; height:50px; font-size: x-large;">Reply</a>
     {% if replies %}
-    <h1 class="display-5">Replies</h1>
+
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">Replies</h1>
     {% for reply in replies %}
         {% if current_user == reply.author %}
             <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
@@ -41,12 +41,12 @@
             modified {{moment(reply.modifydate).calendar()}}
         {% endif %}
         <br>
-        <p class="fs-3">
+        <p class="fs-3" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">
             {{reply.text}}
         </p>
     {% endfor %}
     {% else %}
-        <h1 class="display-5">No Replies</h1>
+        <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">No Replies</h1>
     {% endif %}
      </div>
      <div class="col text-center">
