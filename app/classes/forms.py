@@ -55,8 +55,9 @@ class ClinicForm(FlaskForm):
 
 class HospitalForm(FlaskForm):
     type = SelectField('Type',choices=[("Public","Public"),("Private","Private"), ("Non Profit", "Non Profit")])
-    safeNet = RadioField('Is it a Safety-Net Hopital?', choices=[(True,"Yes"),(False,"No")])
-    name = StringField('Hospital Name', validators=[DataRequired()])
+    image = FileField("Image") 
+    safeNet = RadioField('Is it a Safety-Net Hopital?', choices=[(True,"Yes"),(False,"No/Unsure")])
+    name = SelectField('Name',choices=[("Wilma Chan Highland Hospital","Wilma Chan Highland Hospital"),("Alta Bates Summit Medical Center","Alta Bates Summit Medical Center"), ("UCSF Benioff Children's Hospital", "UCSF Benioff Children's Hospital"), ("Kaiser Permanente", "Kaiser Permanente"),])
     street = StringField('Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
@@ -65,7 +66,7 @@ class HospitalForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class ReviewForm(FlaskForm):
-    name = StringField('Hospital Name', validators=[DataRequired()])
+    name = SelectField('Hospital Name',choices=[("Wilma Chan Highland Hospital","Wilma Chan Highland Hospital"),("Alta Bates Summit Medical Center","Alta Bates Summit Medical Center"), ("UCSF Benioff Children's Hospital", "UCSF Benioff Children's Hospital"), ("Kaiser Permanente", "Kaiser Permanente"),])
     text = TextAreaField('Write your Review', validators=[DataRequired()])
     rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
     submit = SubmitField('Post Review')

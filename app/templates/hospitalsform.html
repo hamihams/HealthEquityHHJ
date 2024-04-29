@@ -2,7 +2,15 @@
 copy this one and then edit it. -->
 
 {% extends "base.html" %}
-
+<head>
+    <meta charset="utf-8" />
+    <title>Star Rating</title>
+    <meta name="viewport"
+          content="width=device-width, 
+                   initial-scale=1" />
+    <link rel="stylesheet"
+          href="styles.css" />
+</head>
 {% block body %}
         <br><br>
         <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c">Tell us about the Hospital!</h1>
@@ -17,13 +25,21 @@ copy this one and then edit it. -->
             {% endfor %}
         {% endfor %}
 
-        <form method=post>
+        <form action="" method="post" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <p>
                 {{ form.type.label }} <br>
-                {{ form.type(size=3) }}
+                {{ form.type() }}
                 <!--List the errors for this field-->
                 {% for error in form.type.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.image.label }} <br>
+                {{ form.image() }}
+                <!--List the errors for this field-->
+                {% for error in form.image.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
@@ -42,9 +58,16 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+            <a class="btn btn-primary" href="https://www.nyu.edu/about/news-publications/news/2023/september/safety-net-hospital.html#:~:text=Safety%2Dnet%20hospitals%20have%20a,complicating%20efforts%20to%20allocate%20funding" target="_blank" role="button">What is a Safety-Net Hospital?</a>
+            <br>
+            <br>
             <p>
                 {{ form.safeNet.label }}<br>
-                {{ form.safeNet() }}<br>
+                <!-- <div class="tooltip"> Is it a Safety-Net Hopital?  
+                    <span class="tooltiptext">Safety-Net Hospital: A type of medical center with a mission that provides healthcare for individuals regardless of their insurance status or ability to pay, serving all populations </span>
+                </div> <br> -->
+
+                {{ form.safeNet() }}
                 {% for error in form.safeNet.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -77,7 +100,6 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-
             {{form.submit()}}
         </form>
 

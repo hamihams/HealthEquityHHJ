@@ -44,8 +44,8 @@
 
       </div>
       <div class="col text-center">
-            {% if hospital.author.image %}
-                <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(hospital.author.image.read())}}">
+            {% if hospital.image %}
+                <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(hospital.image.read())}}">
             {% endif %}
       </div>
     </div>

@@ -102,6 +102,7 @@ class Clinic(Document):
 class Hospital(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     type = StringField()
+    image = FileField() 
     safeNet = BooleanField()
     name = StringField()
     street = StringField()

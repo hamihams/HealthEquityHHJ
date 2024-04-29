@@ -26,6 +26,7 @@ def hospitalNew():
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
             type = form.type.data,
+            image = form.image.data,
             name = form.name.data,
             safeNet = form.safeNet.data,
             city = form.city.data,
@@ -99,6 +100,7 @@ def hospitalEdit(hospitalID):
         # update() is mongoengine method for updating an existing document with new data.
         editHospital.update(
             type = form.type.data,
+            image = form.image.data,
             name = form.name.data,
             safeNet = form.safeNet.data,
             street = form.street.data,
@@ -114,6 +116,7 @@ def hospitalEdit(hospitalID):
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
     form.type.data = editHospital.type
+    form.image.data = editHospital.image
     form.name.data = editHospital.name
     form.safeNet.data = editHospital.safeNet
     form.street.data = editHospital.street

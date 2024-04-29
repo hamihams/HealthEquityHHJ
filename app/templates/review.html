@@ -36,7 +36,7 @@
             <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
             <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
         {% endif %}
-        {{reply.author.fname}} {{reply.author.lname}}: {{moment(reply.create_date).calendar()}}  
+        {{reply.author.fname}} {{reply.author.lname}}, {{current_user.role}} : {{moment(reply.create_date).calendar()}}  
         {% if reply.modifydate %}
             modified {{moment(reply.modifydate).calendar()}}
         {% endif %}
@@ -49,11 +49,11 @@
         <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">No Replies</h1>
     {% endif %}
      </div>
-     <div class="col text-center">
+     <!-- <div class="col text-center">
             {% if review.author.image %}
                     <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(review.author.image.read())}}">
                 {% endif %}
-            </div>
+            </div> -->
         </div>
         
 {% else %}
