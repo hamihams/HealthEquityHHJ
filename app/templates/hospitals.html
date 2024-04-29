@@ -26,31 +26,38 @@
             </a> -->
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Type</h3>
+                <br>
+                <center><h5 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">Type</h5></center>
                 {% endif %}
-
+                <br>
                 <a href="/hospital/{{hospital.id}}">
-                {{hospital.type}}
+                    <br>
+                <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.type}}</h5></center>
                 </a>
             </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                <br>
+                <center><h5 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">Hospital Name</h5></center>
+                {% endif %}
+                <br><br>
+                <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.name}}</h5></center>
+                </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                <center><h5 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">Safety-Net Hospital?</h5></center>
+                {% endif %}
+                <br><br>
+                <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.safeNet}}</h5></center>
+                </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-5">Hospital Name</h3>
+                <br>
+                <center><h5 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">Rating</h5></center>
                 {% endif %}
-                {{hospital.name}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Is it a Safety-net hospital?</h3>
-                {% endif %}
-                {{hospital.safeNet}}
-            </div>
-            <div class="col">
-                {% if loop.index == 1 %}
-                    <h3 class="display-5">Ratings</h3>
-                {% endif %}
-                {{hospital.rating}}
-            </div>
+                <br>
+                <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.rating}}</h5></center>
+                </div>
         </div>
     {% endfor %}
 {% else %}
