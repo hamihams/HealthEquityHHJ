@@ -37,12 +37,19 @@
                 {% endif %}
                 {{review.author.fname}} {{review.author.lname}}
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Hospital</h3>
                 {% endif %}
                 {{review.name}}
             </div>
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Experience</h3>
+                {% endif %}
+                {{review.subject}}
+            </div>
+            <br>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Ratings</h3>

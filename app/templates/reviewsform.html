@@ -28,6 +28,14 @@ copy this one and then edit it. -->
                 {% endfor %}
             </p>
             <p>
+                {{ form.subject.label }} <br>
+                {{ form.subject() }}
+                <!--List the errors for this field-->
+                {% for error in form.subject.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 Write your Review... <br>
                 {{ form.text(cols=64, rows=10) }}
                 <!--List the errors for this field-->
@@ -36,7 +44,7 @@ copy this one and then edit it. -->
                 {% endfor %}
             </p>
             <p>
-                {{ form.rating.label }} <br>
+                Rate your experience: 0 is terrible, 10 is amazing  <br>
                 {{ form.rating() }}
                 {% for error in form.rating.errors %}
                 <span style="color: red;">[{{ error }}]</span>

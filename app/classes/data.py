@@ -120,6 +120,7 @@ class Hospital(Document):
 class Review(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     name = StringField()
+    subject = StringField()
     text = StringField()
     rating = IntField()
     create_date = DateTimeField(default=dt.datetime.utcnow)

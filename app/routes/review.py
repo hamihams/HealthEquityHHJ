@@ -26,6 +26,7 @@ def reviewNew():
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
             name = form.name.data,
+            subject = form.subject.data,
             text = form.text.data,
             rating = form.rating.data,
             author = current_user.id,
@@ -94,6 +95,7 @@ def reviewEdit(reviewID):
         # update() is mongoengine method for updating an existing document with new data.
         editReview.update(
             name = form.name.data,
+            subject = form.subject.data,
             text = form.text.data,
             rating = form.rating.data,
             modify_date = dt.datetime.utcnow
@@ -104,6 +106,7 @@ def reviewEdit(reviewID):
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
     form.name.data = editReview.name
+    form.subject.data = editReview.subject
     form.text.data = editReview.text
     form.rating.data = editReview.rating
 
