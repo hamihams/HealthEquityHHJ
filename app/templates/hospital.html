@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container m-5">
+<div class="container m-5 ">
     <div class="row">
       <div class="col">
         {% if hospital %}
@@ -29,6 +29,7 @@
     <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Address: <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.street}}, {{hospital.city}}, {{hospital.state}} {{hospital.zipcode}}</p></h1>
     <br>
     <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating (0-5 Stars): <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.rating}}</p></h1>
+    <a href="/review/new" class="btn btn-primary btn-sm mt-5" role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:200px; height:50px; font-size: x-large;">Post a Review</a>
 
 {% else %}
     <h1 class="display-5">No Posts</h1>
