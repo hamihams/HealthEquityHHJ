@@ -19,7 +19,7 @@ copy this one and then edit it. -->
 
         <form method=post>
             {{ form.hidden_tag() }}
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large">
                 {{ form.name.label }} <br>
                 {{ form.name() }}
                 <!--List the errors for this field-->
@@ -27,7 +27,7 @@ copy this one and then edit it. -->
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large">
                 {{ form.subject.label }} <br>
                 {{ form.subject() }}
                 <!--List the errors for this field-->
@@ -35,7 +35,7 @@ copy this one and then edit it. -->
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large">
                 Write your Review... <br>
                 {{ form.text(cols=64, rows=10) }}
                 <!--List the errors for this field-->
@@ -43,14 +43,14 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large">
                 Rate your experience: 0 is terrible, 10 is amazing  <br>
                 {{ form.rating() }}
                 {% for error in form.rating.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            {{form.submit()}}
-        </form>
+            <br>
+            <p role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:500px; height:50px; font-size: x-large;">{{form.submit()}}</p>        </form>
         
 {% endblock %}

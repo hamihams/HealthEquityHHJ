@@ -27,7 +27,7 @@ copy this one and then edit it. -->
 
         <form action="" method="post" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.type.label }} <br>
                 {{ form.type() }}
                 <!--List the errors for this field-->
@@ -35,7 +35,7 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.image.label }} <br>
                 {{ form.image() }}
                 <!--List the errors for this field-->
@@ -43,7 +43,7 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.street.label }} <br>
                 {{ form.street() }}
                 <!--List the errors for this field-->
@@ -51,7 +51,7 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.name.label }}<br>
                 {{ form.name() }}<br>
                 {% for error in form.name.errors %}
@@ -68,7 +68,7 @@ copy this one and then edit it. -->
                 </script>
             <br>
             <br>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.safeNet.label }}<br>
                 <!-- <div class="tooltip"> Is it a Safety-Net Hopital?  
                     <span class="tooltiptext">Safety-Net Hospital: A type of medical center with a mission that provides healthcare for individuals regardless of their insurance status or ability to pay, serving all populations </span>
@@ -79,35 +79,36 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p  style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.city.label }}<br>
                 {{ form.city() }}<br>
                 {% for error in form.city.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.state.label }}<br>
                 {{ form.state() }}<br>
                 {% for error in form.state.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.zipcode.label }}<br>
                 {{ form.zipcode() }}<br>
                 {% for error in form.zipcode.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.rating.label }}<br>
                 {{ form.rating() }}<br>
                 {% for error in form.rating.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            {{form.submit()}}
+            <br>
+            <p role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:500px; height:50px; font-size: x-large;">{{form.submit()}}</p>
         </form>
 
         

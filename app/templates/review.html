@@ -23,13 +23,15 @@
     <br>
     <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c">{{review.name}}</h1>
     <br>
-    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating 0-5: {{review.rating}}</h1>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Experience: {{review.subject}}</h1>
     <br>
-    <h3 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#45567b">{{review.text}}</h3>
+    <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating 0-10: {{review.rating}}</h1>
+    <br>
+    <h3 style="font-family:Georgia, 'Times New Roman', Times, serif; color:#267496">{{review.text}}</h3>
     <br>
     <a href="/reply/new/{{review.id}}" class="btn btn-primary btn-sm" role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:100px; height:50px; font-size: x-large;">Reply</a>
-    {% if replys %}
-
+    <br>
+    {% if replies %}
     <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691">Replies</h1>
     {% for reply in replys %}
         {% if current_user == reply.author %}
