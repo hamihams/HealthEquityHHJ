@@ -5,9 +5,9 @@
 from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired, NumberRange
-from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailField
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
-from wtforms_components import TimeField
+from wtforms.validators import URL, Email, DataRequired
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField, URLField, DateField, TimeField, EmailField, RadioField
+
 
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
