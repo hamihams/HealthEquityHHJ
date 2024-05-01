@@ -74,9 +74,9 @@ def review(reviewID):
     # there is a field on the comment collection called 'blog' that is a reference the Blog
     # document it is related to.  You can use the blogID to get the blog and then you can use
     # the blog object (thisBlog in this case) to get all the comments.
-    theseReplies = Reply.objects(review=thisReview)
+    theseReplys = Reply.objects(review=thisReview)
     # Send the blog object and the comments object to the 'blog.html' template.
-    return render_template('review.html',review=thisReview, replies=theseReplies)
+    return render_template('review.html',review=thisReview, replys=theseReplys)
 
 @app.route('/review/edit/<reviewID>', methods=['GET', 'POST'])
 @login_required

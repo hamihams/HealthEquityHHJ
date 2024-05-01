@@ -56,8 +56,8 @@ class ClinicForm(FlaskForm):
 class HospitalForm(FlaskForm):
     type = SelectField('Type',choices=[("Public","Public"),("Private","Private"), ("Non Profit", "Non Profit")])
     image = FileField("Image") 
-    safeNet = RadioField('Is it a Safety-Net Hopital?', choices=[(True,"Yes"),(False,"No/Unsure")])
-    name = SelectField('Name',choices=[("Wilma Chan Highland Hospital","Wilma Chan Highland Hospital"),("Alta Bates Summit Medical Center","Alta Bates Summit Medical Center"), ("UCSF Benioff Children's Hospital", "UCSF Benioff Children's Hospital"), ("Kaiser Permanente", "Kaiser Permanente"),])
+    safeNet = RadioField('Is it a Safety-Net Hospital?', choices=[(True,"Yes"),(False,"No/Unsure")])
+    name = SelectField('Name',choices=[("Wilma Chan Highland Hospital","Wilma Chan Highland Hospital"),("Alta Bates Summit Medical Center","Alta Bates Summit Medical Center"), ("UCSF Benioff Children's Hospital", "UCSF Benioff Children's Hospital"), ("Kaiser Permanente", "Kaiser Permanente"), ("Fairmont Rehabilitation & Wellness", "Fairmont Rehabilitation & Wellness"), ("John George Psychiatric Pavilion", "John George Psychiatric Pavilion"), ("Alameda Hospital", "Alameda Hospital"), ("San Leandro Hospital","San Leandro Hospital")])
     street = StringField('Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
