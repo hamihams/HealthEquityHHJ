@@ -132,3 +132,4 @@ dmypy.json
 # Other
 *.code-workspace
 secrets.py
+app/classes/forms.py
