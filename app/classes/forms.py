@@ -69,7 +69,7 @@ class ReviewForm(FlaskForm):
     name = SelectField('Hospital Name',choices=[("Wilma Chan Highland Hospital","Wilma Chan Highland Hospital"),("Alta Bates Summit Medical Center","Alta Bates Summit Medical Center"), ("UCSF Benioff Children's Hospital", "UCSF Benioff Children's Hospital"), ("Kaiser Permanente", "Kaiser Permanente"),])
     text = TextAreaField('Write your Review', validators=[DataRequired()])
     subject = SelectField('Exoeriences',choices=[("Patient Care", "Patient Care"), ("Visitor","Visitor"),("Waiting Duration","Waiting Duration"), ("Internship/Leanring Programs", "Internship/Leanring Programs"), ("Volunteer", "Volunteer"), ("Patient", "Patient"), ("Hospitality", "Hospitality"), ("Other","Other")])
-    rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
+    rating = IntegerField('Rate your experience: 0 is terrible, 10 is amazing', validators=[NumberRange(min=0,max=10, message="Enter a number between 0 and 10.")])
     submit = SubmitField('Post Review')
 
 class ReplyForm(FlaskForm):
