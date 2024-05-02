@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired, NumberRange
 from wtforms.validators import URL, Email, DataRequired
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField, URLField, DateField, TimeField, EmailField, RadioField
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField, URLField, DateField, TimeField, EmailField, RadioField, HiddenField
 
 
 class ProfileForm(FlaskForm):
@@ -65,7 +65,8 @@ class HospitalForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     zipcode = StringField('Zipcode',validators=[DataRequired()])
-    rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
+    # rating = IntegerField('Rate your experience: 0 is terrible, 5 is amazing', validators=[NumberRange(min=0,max=5, message="Enter a number between 0 and 5.")])
+    rating = HiddenField("Rating", validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class ReviewForm(FlaskForm):
