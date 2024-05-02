@@ -2,6 +2,9 @@
 # and users fill them out.  Each form is an instance of a class. Forms are managed by the 
 # Flask-WTForms library.
 
+#HARRISON --> RUN THIS IN YOUR TERMINAL IF IT DOESNT WORK 
+# python3 -m pip install --upgrade wtforms
+
 from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired, NumberRange
