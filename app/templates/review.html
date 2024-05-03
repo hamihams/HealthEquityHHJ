@@ -31,7 +31,7 @@
     <br>
     <a href="/reply/new/{{review.id}}" class="btn btn-primary btn-sm" role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:100px; height:50px; font-size: x-large;">Reply</a>
     <br>
-    {% if replies %}
+    {% if replys %}
     <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691">Replies</h1>
     {% for reply in replys %}
         {% if current_user == reply.author %}
