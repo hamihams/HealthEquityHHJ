@@ -39,6 +39,11 @@ copy this one and then edit it. -->
             </p>
             <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.image.label }} <br>
+                {% if hospital %}
+                    {% if hospital.image %}
+                    <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(hospital.image.read())}}"> <br>
+                    {% endif %}
+                {% endif %}
                 {{ form.image() }}
                 <!--List the errors for this field-->
                 {% for error in form.image.errors %}
@@ -108,9 +113,9 @@ copy this one and then edit it. -->
                 <div class="rating-wrapper">
                     <img id="1" src="/static/star.png" width="50">
                     <img id="2" src="/static/star.png" width="50">
-                        <img id="3" src="/static/star.png" width="50">
-                        <img id="4" src="/static/star.png" width="50">
-                        <img id="5" src="/static/star.png" width="50">
+                    <img id="3" src="/static/star.png" width="50">
+                    <img id="4" src="/static/star.png" width="50">
+                    <img id="5" src="/static/star.png" width="50">
                    </div>
                 {{ form.rating() }}<br>
                 {% for error in form.rating.errors %}
@@ -122,10 +127,18 @@ copy this one and then edit it. -->
         </form>
 
         <script>
+
+            const stars = document.querySelectorAll('.rating-wrapper img');
+            if (document.querySelector('#rating').value)
+            {
+                for(j=0; j < document.querySelector('#rating').value; j++){
+                        stars[j].classList.add('rating-checked');
+                }
+            }
+
             document.querySelector('.rating-wrapper').addEventListener('click', updateStarRating, false);
             function updateStarRating(evt){
                 for(i=0; i < parseInt(evt.target.id); i++){
-                    const stars = document.querySelectorAll('.rating-wrapper img');
                     for(s=0; s < 5; s++){
                         stars[s].classList.remove('rating-checked');
                     }

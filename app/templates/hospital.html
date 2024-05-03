@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container m-5 ">
     <div class="row">
-      <div class="col-8">
+      <div class="col-7">
         {% if hospital %}
     {{moment(hospital.create_date).calendar()}} by {{hospital.author.fname}} {{hospital.author.lname}} 
     {% if hospital.modifydate %}
@@ -34,6 +34,7 @@
                     <span><img src="/static/star.png" style="width: 35px;"></span>
                 {% endfor %}
     <!-- <h1 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#30436c"> Rating (0-5 Stars): <p class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">{{hospital.rating}}</p></h1> -->
+    <br>
     <a href="/review/new" class="btn btn-primary btn-sm mt-5" role="button" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#ffffff; width:200px; height:50px; font-size: x-large;">Post a Review</a>
 
 {% else %}
@@ -49,7 +50,7 @@
     Rating: {{hospital.rating}} -->
 
       </div>
-      <div class="col-3 text-center">
+      <div class="col text-center">
             {% if hospital.image %}
                 <img width="300" class="img-thumbnail " src="data:image;base64,{{base64encode(hospital.image.read())}}">
             {% endif %}

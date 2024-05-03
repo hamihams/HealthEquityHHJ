@@ -100,7 +100,6 @@ def hospitalEdit(hospitalID):
         # update() is mongoengine method for updating an existing document with new data.
         editHospital.update(
             type = form.type.data,
-            image = form.image.data,
             name = form.name.data,
             safeNet = form.safeNet.data,
             street = form.street.data,
@@ -110,6 +109,13 @@ def hospitalEdit(hospitalID):
             rating = form.rating.data,
             modify_date = dt.datetime.utcnow
         )
+
+        if form.image.data:
+            if editHospital.image:
+                editHospital.image.delete()
+            editHospital.image.put(form.image.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            editHospital.save()
         # After updating the document, send the user to the updated blog using a redirect.
         return redirect(url_for('hospital',hospitalID=hospitalID))
 
@@ -125,7 +131,7 @@ def hospitalEdit(hospitalID):
     form.zipcode.data = editHospital.zipcode
     form.rating.data = editHospital.rating
     
-    return render_template('hospitalsform.html',form=form)
+    return render_template('hospitalsform.html',form=form, hospital=editHospital)
 
 @app.route('/hospital/delete/<hospitalID>')
 # Only run this route if the user is logged in.
