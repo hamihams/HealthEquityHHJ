@@ -13,7 +13,7 @@ from setuptools import SetuptoolsDeprecationWarning
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, IntField, ReferenceField, DateTimeField, BooleanField, FloatField, CASCADE
+from mongoengine import ListField, FileField, EmailField, StringField, IntField, ReferenceField, DateTimeField, BooleanField, FloatField, CASCADE
 from flask_mongoengine import Document
 import datetime as dt
 import jwt
@@ -123,6 +123,7 @@ class Review(Document):
     subject = StringField()
     text = StringField()
     rating = IntField()
+    subject = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
@@ -134,8 +135,12 @@ class Reply(Document):
     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     review = ReferenceField('Review',reverse_delete_rule=CASCADE)
+    name = StringField()
     # This could be used to allow comments on comments
-    reply = ReferenceField('Reply',reverse_delete_rule=CASCADE)
+    outer = BooleanField()
+    replies = ListField()
+    dFromOuter = IntField()
+    #ReferenceField('Reply',reverse_delete_rule=CASCADE)
     # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
     text = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)

@@ -11,13 +11,11 @@
         {% endfor %}
 
         <h1 class="display-5">{{review.name}}</h1>
-        {{review.text}} <br>
-        <h1 class="display-5"> New Reply</h1>
+        <h4>{{review.text}} </h3><br>
+        <h6> New Reply</h6>
 
         <form method=post>
             {{ form.hidden_tag() }}
-            
-            {{ form.text.label }} <br>
             {{ form.text(cols=64) }}
             <!--List the errors for this field-->
             {% for error in form.text.errors %}

@@ -6,6 +6,7 @@ from app.classes.data import Review, Reply
 from app.classes.forms import ReviewForm, ReplyForm
 from flask_login import login_required
 import datetime as dt
+from mongoengine.queryset.visitor import Q
 
 @app.route('/review/new', methods=['GET', 'POST'])
 # This means the user must be logged in to see this page
@@ -63,6 +64,10 @@ def reviewList():
     # each blog.
     return render_template('reviews.html',reviews=reviews)
 
+
+
+
+
 @app.route('/review/<reviewID>')
 # This route will only run if the user is logged in.
 @login_required
@@ -74,9 +79,9 @@ def review(reviewID):
     # there is a field on the comment collection called 'blog' that is a reference the Blog
     # document it is related to.  You can use the blogID to get the blog and then you can use
     # the blog object (thisBlog in this case) to get all the comments.
-    theseReplys = Reply.objects(review=thisReview)
+    theseReplies = Reply.objects(Q(review=thisReview) & Q(outer=True))
     # Send the blog object and the comments object to the 'blog.html' template.
-    return render_template('review.html',review=thisReview, replys=theseReplys)
+    return render_template('review.html',review=thisReview, replys=theseReplies)
 
 @app.route('/review/edit/<reviewID>', methods=['GET', 'POST'])
 @login_required
@@ -136,23 +141,46 @@ def reviewDelete(reviewID):
     # Send the user to the list of remaining blogs.
     return render_template('reviews.html',reviews=reviews)
 
-
-
-
-@app.route('/reply/new/<reviewID>', methods=['GET', 'POST'])
+@app.route('/reply/newRev/<reviewID>', methods=['GET', 'POST'])
 @login_required
-def replyNew(reviewID):
+def replyNewRev(reviewID):
     review = Review.objects.get(id=reviewID)
     form = ReplyForm()
     if form.validate_on_submit():
         newReply = Reply(
             author = current_user.id,
             review = reviewID,
-            text = form.text.data
+            text = form.text.data,
+            name = review.name,
+            dFromOuter = 0,
+            outer = True
         )
         newReply.save()
-        return redirect(url_for('review',reviewID=reviewID))
+        return redirect(url_for('review',reviewID=review.id))
     return render_template('replyform.html',form=form,review=review)
+
+@app.route('/reply/newRep/<reviewID>/<replyID>', methods=['GET', 'POST'])
+@login_required
+def replyNewRep(reviewID, replyID):
+    review = Review.objects.get(id=reviewID)
+    reply = Reply.objects.get(id=replyID)
+    form = ReplyForm()
+    if form.validate_on_submit():
+        newReply = Reply(
+            author = current_user.id,
+            review = reviewID,
+            text = form.text.data,
+            name = review.name,
+            dFromOuter = reply.dFromOuter+1,
+            outer = False
+        )
+        newReply.save()
+        reply.replies.append(newReply)
+        reply.save()
+        print(reply)
+        print(reply.replies)
+        return redirect(url_for('review',reviewID=review.id))
+    return render_template('replyform.html',form=form,review=reply)
 
 
 @app.route('/reply/edit/<replyID>', methods=['GET', 'POST'])
@@ -175,7 +203,7 @@ def replyEdit(replyID):
 
     return render_template('replyform.html',form=form,review=review)   
 
-@app.route('/reply/delete/<creplyID>')
+@app.route('/reply/delete/<replyID>')
 @login_required
 def replyDelete(replyID): 
     deleteReply = Reply.objects.get(id=replyID)
