@@ -54,7 +54,7 @@
                 <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
             {% endif %}
 
-            {{reply.author.fname}} {{reply.author.lname}}, {{current_user.role}} :{{moment(reply.create_date).calendar()}}  
+            {{reply.author.fname}} {{reply.author.lname}}, {{current_user.role}}: {{moment(reply.create_date).calendar()}}  
             {% if reply.modifydate %}
                 modified {{moment(reply.modifydate).calendar()}}
             {% endif %}
