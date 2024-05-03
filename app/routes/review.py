@@ -81,7 +81,7 @@ def review(reviewID):
     # the blog object (thisBlog in this case) to get all the comments.
     theseReplies = Reply.objects(Q(review=thisReview) & Q(outer=True))
     # Send the blog object and the comments object to the 'blog.html' template.
-    return render_template('review.html',review=thisReview, replys=theseReplies)
+    return render_template('review.html',review=thisReview, replies=theseReplies)
 
 @app.route('/review/edit/<reviewID>', methods=['GET', 'POST'])
 @login_required
