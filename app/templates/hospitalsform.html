@@ -133,7 +133,7 @@ copy this one and then edit it. -->
                         stars[j].classList.add('rating-checked');
                     }
                 }
-                document.querySelector('#rating').value = evt.target.id;
+                document.querySelector('#rating').value = parseInt(evt.target.id);
             }
         </script>
 {% endblock %}
