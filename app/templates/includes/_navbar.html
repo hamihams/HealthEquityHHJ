@@ -1,29 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container-fluid mb-3">
-    <a class="navbar-brand .navbar-text me-5 display-5 font-weight-bold fw-bold" style="color:#30436c" href="/">MyHospital: Equity Bubble</a>
+    <a class="navbar-brand .navbar-text text-center display-5 font-weight-bold fw-bold" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#30436c; font-size: x-large;" href="/">MyHospital:<br> Equity Bubble</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav  mb-2 mb-lg-0 display-8 text-black fw-bold"> 
         <li class="nav-item">
-          <a class="nav-link" href="/">Homepage</a>
+          <a class="nav-link" href="/" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;" >Homepage</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/aboutus">About Us</a>
+          <a class="nav-link" href="/aboutus" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/overview">FAQ</a>
+          <a class="nav-link" href="/overview" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">FAQ</a>
         </li>
         <li class='nav-item'>
-          <a class="nav-link" href="/reviews">Rate Your Experience</a>
+          <a class="nav-link" href="/reviews" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;" >Rate Your Experience</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/hospital/new">Rate your Hospital!</a></li>
-            <li><a class="dropdown-item" href="/hospitals">View Hospital Ratings!</a></li>
+            <li><a class="dropdown-item" href="/hospital/new" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">Rate your Hospital!</a></li>
+            <li><a class="dropdown-item" href="/hospitals" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">View Hospital Ratings!</a></li>
           </ul>
         </li>
         <li>
@@ -31,13 +31,13 @@
       </ul>
 
       <form class="d-flex me-2" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
+        <button class="btn btn-outline-primary" type="submit" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">Search</button>
       </form>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if current_user.is_anonymous %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-link" href="{{ url_for('login') }}" >Login</a>
 
           </li>
         {% else %}
