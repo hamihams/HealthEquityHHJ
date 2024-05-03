@@ -46,14 +46,6 @@ copy this one and then edit it. -->
                 {% endfor %}
             </p>
             <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
-                {{ form.street.label }} <br>
-                {{ form.street() }}
-                <!--List the errors for this field-->
-                {% for error in form.street.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
-            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
                 {{ form.name.label }}<br>
                 {{ form.name() }}<br>
                 {% for error in form.name.errors %}
@@ -78,6 +70,14 @@ copy this one and then edit it. -->
 
                 {{ form.safeNet() }}
                 {% for error in form.safeNet.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; color:#4b4691; font-size:x-large" >
+                {{ form.street.label }} <br>
+                {{ form.street() }}
+                <!--List the errors for this field-->
+                {% for error in form.street.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
