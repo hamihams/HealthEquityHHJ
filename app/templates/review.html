@@ -43,8 +43,10 @@
 
         {% set reply = list.replyList.pop(0) %}
         {% set marg = [] %}
+        
+
         {% if reply.outer != True %}
-                {% for i in range(reply.dFromOuter) %}
+                {% for i in range(reply.dFromOuter|int) %}
                     <div hidden="true">{{ marg.append(1) }}</div>
                 {% endfor %}
         {% endif %}
@@ -55,8 +57,8 @@
             {% endif %}
 
             {{reply.author.fname}} {{reply.author.lname}}, {{current_user.role}}: {{moment(reply.create_date).calendar()}}  
-            {% if reply.modifydate %}
-                modified {{moment(reply.modifydate).calendar()}}
+            {% if reply.modify_date %}
+                (modified {{moment(reply.modify_date).calendar()}})
             {% endif %}
 
             <br>

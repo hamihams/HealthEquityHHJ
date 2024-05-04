@@ -177,8 +177,6 @@ def replyNewRep(reviewID, replyID):
         newReply.save()
         reply.replies.append(newReply)
         reply.save()
-        print(reply)
-        print(reply.replies)
         return redirect(url_for('review',reviewID=review.id))
     return render_template('replyform.html',form=form,review=reply)
 
@@ -195,7 +193,7 @@ def replyEdit(replyID):
     if form.validate_on_submit():
         editReply.update(
             text = form.text.data,
-            modifydate = dt.datetime.utcnow
+            modify_date = dt.datetime.utcnow
         )
         return redirect(url_for('review',reviewID=editReply.review.id))
 
