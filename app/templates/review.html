@@ -43,14 +43,16 @@
 
         {% set reply = list.replyList.pop(0) %}
         {% set marg = [] %}
-        
+        {% set border = namespace(txt = '') %}
 
         {% if reply.outer != True %}
+            {% set border.txt = "1px solid white" %}
                 {% for i in range(reply.dFromOuter|int) %}
                     <div hidden="true">{{ marg.append(1) }}</div>
                 {% endfor %}
         {% endif %}
-        <div style="padding-left: {{marg|count * 20}}px;">
+        
+        <div style="margin-left: {{marg|count * 50}}px;">
             {% if current_user == reply.author %}
                 <a href="/reply/delete/{{reply.id}}"><img width="20" src="/static/delete.png"></a> 
                 <a href="/reply/edit/{{reply.id}}"><img width="20" src="/static/edit.png"></a>
@@ -62,12 +64,6 @@
             {% endif %}
 
             <br>
-
-            <!-- {% if reply.outer != True %}
-                {% for i in range(reply.dFromOuter) %}
-                    <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                {% endfor %}
-            {% endif %} -->
 
             <p class="fs-3" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">
                 {{reply.text}}
@@ -82,6 +78,7 @@
             <a href="/reply/newRep/{{review.id}}/{{reply.id}}" class="btn btn-primary btn-sm" role="button">Reply</a>
             <br>
         </div>
+
         {% if list.replyList|length == 0 %}
             {% set data.l_bool = true %}
         {% endif %}
