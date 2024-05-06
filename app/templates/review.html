@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container m-5">
     <div class="row">
-      <div class="col">
+      <div class="col" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#995dd8">
         {% if review %}
     {{moment(review.create_date).calendar()}} by {{review.author.fname}} {{review.author.lname}} 
     {% if review.modifydate %}
