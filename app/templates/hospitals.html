@@ -56,10 +56,7 @@
                 <center><h5 class="display-5" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#125672">Rating</h5></center>
                 {% endif %}
                 <br>
-                {% for i in range(hospital.rating) %}
-                    <span><img src="/static/star.png" style="width: 35px;"></span>
-                {% endfor %}
-                <!-- <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.rating}}</h5></center> -->
+                <center><h6 class="display-6" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#544cc2">{{hospital.rating}}</h5></center>
                 </div>
         </div>
     {% endfor %}

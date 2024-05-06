@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container m-5 ">
     <div class="row">
-      <div class="col-7">
+      <div class="col-7" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#544cc2">
         {% if hospital %}
     {{moment(hospital.create_date).calendar()}} by {{hospital.author.fname}} {{hospital.author.lname}} 
     {% if hospital.modifydate %}

@@ -34,7 +34,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
         <button class="btn btn-outline-primary" type="submit" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">Search</button>
       </form>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large;">
         {% if current_user.is_anonymous %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('login') }}" >Login</a>
