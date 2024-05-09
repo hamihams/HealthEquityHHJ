@@ -79,7 +79,7 @@ def review(reviewID):
     # there is a field on the comment collection called 'blog' that is a reference the Blog
     # document it is related to.  You can use the blogID to get the blog and then you can use
     # the blog object (thisBlog in this case) to get all the comments.
-    theseReplies = Reply.objects(Q(review=thisReview) & Q(outer=True))
+    theseReplies = Reply.objects(Q(review=thisReview) & Q(outer=True) & Q(dFromOuter=0))
     # Send the blog object and the comments object to the 'blog.html' template.
     return render_template('review.html',review=thisReview, replies=theseReplies)
 
@@ -105,8 +105,9 @@ def reviewEdit(reviewID):
             rating = form.rating.data,
             modify_date = dt.datetime.utcnow
         )
+        theseReplies = Reply.objects(Q(review=editReview) & Q(outer=True) & Q(dFromOuter=0))
         # After updating the document, send the user to the updated blog using a redirect.
-        return redirect(url_for('review',reviewID=reviewID))
+        return redirect(url_for('review',reviewID=reviewID, replies=theseReplies))
 
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
@@ -156,7 +157,8 @@ def replyNewRev(reviewID):
             outer = True
         )
         newReply.save()
-        return redirect(url_for('review',reviewID=review.id))
+        theseReplies = Reply.objects(Q(review=review) & Q(outer=True) & Q(dFromOuter=0))
+        return redirect(url_for('review',reviewID=review.id, replies=theseReplies))
     return render_template('replyform.html',form=form,review=review)
 
 @app.route('/reply/newRep/<reviewID>/<replyID>', methods=['GET', 'POST'])
@@ -195,7 +197,8 @@ def replyEdit(replyID):
             text = form.text.data,
             modify_date = dt.datetime.utcnow
         )
-        return redirect(url_for('review',reviewID=editReply.review.id))
+        theseReplies = Reply.objects(Q(review=review) & Q(outer=True) & Q(dFromOuter=0))
+        return redirect(url_for('review',reviewID=editReply.review.id, replies=theseReplies))
 
     form.text.data = editReply.text
 
@@ -205,6 +208,12 @@ def replyEdit(replyID):
 @login_required
 def replyDelete(replyID): 
     deleteReply = Reply.objects.get(id=replyID)
+    for reply in Reply.objects(Q(review=deleteReply.review) & Q(dFromOuter=(deleteReply.dFromOuter-1))):
+        if reply.replies is not None and deleteReply in reply.replies:
+                replyReplies = reply.replies
+                reply.replies = replyReplies.remove(deleteReply)
+                reply.save()
     deleteReply.delete()
     flash('The reply was deleted.')
-    return redirect(url_for('review',reviewID=deleteReply.review.id)) 
+    theseReplies = Reply.objects(Q(review=deleteReply.review) & Q(outer=True) & Q(dFromOuter=0))
+    return redirect(url_for('review',reviewID=deleteReply.review.id, replies=theseReplies)) 
