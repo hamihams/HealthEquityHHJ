@@ -2,18 +2,18 @@
 
 {% block body %}
 
-    <h1>Register</h1>
+    <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color:#0e2a6c">Register</h1>
     <!--enctype is needed to upload files -->
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">
             {{ form.role.label }}<br>
             {{ form.role() }}<br>
             {% for error in form.role.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">
             {{ form.age.label }}<br>
             {{ form.age() }}<br>
             {% for error in form.age.errors %}
@@ -21,14 +21,14 @@
             {% endfor %}
         </p>
 
-        <p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">
             {{ form.fname.label }}<br>
             {{ form.fname(size=64) }}<br>
             {% for error in form.fname.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">
             {{ form.lname.label }}<br>
             {{ form.lname() }}<br>
             {% for error in form.lname.errors %}
@@ -36,7 +36,7 @@
             {% endfor %}
         </p>
 
-        <p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">
             {{ form.image.label }}<br>
             {% if current_user.image %}
                 <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
@@ -48,7 +48,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; color:#255972">{{ form.submit() }}</p>
     </form>
 
 {% endblock %}

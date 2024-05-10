@@ -17,7 +17,7 @@
     </div>
     <div class="col display-5" style="font-family:Georgia, 'Times New Roman', Times, serif ; color:#125672">
         {% if current_user.fname and current_user.lname %}
-            Name: {{current_user.fname}}  {{current_user.lname}} <br>
+            Name: {{current_user.fname}}  {{current_user.lname}}<br>
         {% else %}
             Google User Name: {{current_user.gname}} <br>
         {% endif %}
